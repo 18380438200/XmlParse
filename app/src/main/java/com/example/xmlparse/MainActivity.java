@@ -4,14 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
+import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
-import org.json.JSONObject;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import org.json.JSONArray;
+import org.json.JSONException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setAdapter();
-        xmlParse();
+        //xmlParse();
+        xmlToJson();
     }
 
     private void setAdapter(){
@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 ImageView ivCover = holder.getView(R.id.iv_cover);
                 Glide.with(getApplicationContext()).load(NewsBean.getImageUrl().trim()).into(ivCover);
 
-                Log.i("TAG",NewsBean.getImageUrl());
-
                 holder.setText(R.id.tv_title,NewsBean.getName());
                 holder.setText(R.id.tv_content,NewsBean.getContent());
                 holder.setText(R.id.tv_num,"字数 " + NewsBean.getLength());
@@ -49,18 +47,29 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     * pull解析方式
+     */
     private void xmlParse(){
-        datas = PullParser.pullParse(getApplicationContext());
+        List list = PullParser.pullParse(getApplicationContext());
+        datas.addAll(list);
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * xml转json方式
+     * @return
+     */
     private int xmlToJson() {
-        try {
-            InputStream inputStream = new FileInputStream("");
-            XmlToJson xmlToJson = new XmlToJson.Builder(inputStream, null).build();
-            JSONObject jsonObject = xmlToJson.toJson();
 
-        } catch (FileNotFoundException e) {
+        try {
+            InputStream inputStream = getResources().openRawResource(R.raw.news);
+            XmlToJson xmlToJson = new XmlToJson.Builder(inputStream, null).build();
+            JSONArray array = xmlToJson.toJson().getJSONObject("news").getJSONArray("item");
+            List list = JSON.parseArray(array.toString(),NewsBean.class);
+            datas.addAll(list);
+            adapter.notifyDataSetChanged();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return 0;
