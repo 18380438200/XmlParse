@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<news>
+    <item name="国产航母下水" textnum="35">
+        <content>
+            新型武器方面，中国的主要成就有远程导弹，国产航母，新型驱逐舰，两栖舰，隐身战斗机，无人机，网络战能力。
+        </content>
+        <imageurl>
+            http://n.sinaimg.cn/sinacn/w640h400/20171220/6a0a-fypvuqe3950199.jpg
+        </imageurl>
+    </item>
+
+    <item name="055型导弹驱逐舰下水" textnum="94">
+        <content>
+            中国的造舰速度已经远超美国，按照五角大楼的说法，在未来15年内，中国将继续服役5艘航母。届时中国将拥有6艘航母和对应的先进舰载机、武器系统。此外，中国还将继续生产071型两栖登陆舰、055型大型驱逐舰、弹道导弹战略核潜艇等。这些性能先进的武器将彻底影响美国海军在亚太地区乃至全球的战略考量。
+        </content>
+        <imageurl>
+            http://n.sinaimg.cn/sinacn/w640h371/20171220/987f-fypvuqe3953002.jpg
+        </imageurl>
+    </item>
+
+    <item name="歼-20战斗机" textnum="118">
+        <content>
+            中国空军发展同样迅速：隐身战斗机、远程空空导弹、大型预警机、战略运输机都将被重点部署。解放军目前拥有大约2200架战机，其中600架被认为是现代化的，包括了歼-10、歼-11、苏-27/30、苏-35和歼-20。如今的中国空军，正在从一支固守本土、能力有限的部队提升为一支现代化、全球化的大型空天军，美军将遭遇冷战以来的最强劲对手。
+        </content>
+        <imageurl>
+            http://n.sinaimg.cn/sinacn/w640h480/20171220/fe4f-fypvuqe3953079.jpg
+        </imageurl>
+    </item>
+</news>
